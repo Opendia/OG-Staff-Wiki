@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<title>OG Wardogs Staff Handbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: refined field handbook. Dark crest band with the OG logo, sticky tab bar, one column of chapters; wing-stripe motif from the logo marks each chapter. */
+:root{
+  --bg:#f3f3ef; --surface:#ffffff; --sunk:#eaeae4; --line:#dcdcd3;
+  --fg:#16180f; --muted:#5a5d50; --accent:#3f4a26; --accent-ink:#ffffff; --brass:#8a6420;
+  --hero:#0d0e0b; --hero-fg:#f4f4ef; --hero-muted:#a9ab9e; --hero-line:#2a2c24;
+  --sev-1:#9c7a0e; --sev-2:#b8641a; --sev-3:#b8462a; --sev-4:#a02a2a; --sev-5:#5c1414;
+  --sev-1-bg:#f6efd2; --sev-2-bg:#f8e6d2; --sev-3-bg:#f7dcd2; --sev-4-bg:#f4d6d6; --sev-5-bg:#ecd0d0;
+  --good:#356b32; --good-bg:#e1eedb; --bad-bg:#f6e0dc; --bad:#9c3328;
+  --f-display:"Saira Condensed", "Arial Narrow", Impact, sans-serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f100d; --surface:#171913; --sunk:#1f221a; --line:#2c3024;
+  --fg:#e9e9e1; --muted:#a0a394; --accent:#b5c47e; --accent-ink:#11130d; --brass:#d6a54c;
+  --hero:#070806; --hero-fg:#f4f4ef; --hero-muted:#9a9c90; --hero-line:#22241d;
+  --sev-1:#e6c04a; --sev-2:#ec9a48; --sev-3:#ec7a55; --sev-4:#ef6464; --sev-5:#ff9d9d;
+  --sev-1-bg:#332c12; --sev-2-bg:#372612; --sev-3-bg:#3a2016; --sev-4-bg:#3c1a1a; --sev-5-bg:#441313;
+  --good:#8fcf7f; --good-bg:#1c2e1c; --bad-bg:#361b17; --bad:#f08a7c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f100d; --surface:#171913; --sunk:#1f221a; --line:#2c3024;
+  --fg:#e9e9e1; --muted:#a0a394; --accent:#b5c47e; --accent-ink:#11130d; --brass:#d6a54c;
+  --hero:#070806; --hero-fg:#f4f4ef; --hero-muted:#9a9c90; --hero-line:#22241d;
+  --sev-1:#e6c04a; --sev-2:#ec9a48; --sev-3:#ec7a55; --sev-4:#ef6464; --sev-5:#ff9d9d;
+  --sev-1-bg:#332c12; --sev-2-bg:#372612; --sev-3-bg:#3a2016; --sev-4-bg:#3c1a1a; --sev-5-bg:#441313;
+  --good:#8fcf7f; --good-bg:#1c2e1c; --bad-bg:#361b17; --bad:#f08a7c; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px;border-radius:4px}
+.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Hero crest band */
+.hero{background:var(--hero);color:var(--hero-fg);position:relative;overflow:hidden;border-bottom:1px solid var(--hero-line)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 22px,rgba(255,255,255,.025) 22px 23px);pointer-events:none}
+.hero .wrap{position:relative;padding-block:48px 40px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center}
+.crest{width:clamp(130px,18vw,190px);height:auto;display:block;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.hero-text{display:grid;gap:12px;min-width:0}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--hero-muted)}
+.hero h1{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(36px,6.4vw,64px);line-height:.95;margin:0;text-wrap:balance;letter-spacing:.01em}
+.hero h1 span{display:block;color:var(--hero-muted);font-weight:600;font-size:.52em;letter-spacing:.06em;margin-top:8px}
+.hero p{margin:0;max-width:60ch;font-size:16.5px;color:var(--hero-muted)}
+.hero p b{color:var(--hero-fg);font-weight:600}
+@media (max-width:640px){.hero .wrap{grid-template-columns:1fr;gap:20px;padding-block:32px 28px}.crest{width:120px}}
+.wings{display:inline-grid;gap:3px;width:22px;flex:none}
+.wings i{display:block;height:3px;background:currentColor;border-radius:1px}
+.wings i:nth-child(2){width:80%;margin-left:auto}.wings i:nth-child(3){width:60%;margin-left:auto}
+
+/* Tabs */
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs .wrap{overflow-x:auto;scrollbar-width:none}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tabs .bar{display:flex;align-items:center;gap:12px;width:max-content}
+.tabs a.mini{padding:0;width:34px;height:34px;border-radius:8px;background:var(--hero);display:grid;place-items:center;flex:none}
+.tabs .mini img{width:26px;height:auto}
+.tabs ul{list-style:none;margin:0;padding:10px 0;display:flex;gap:4px;width:max-content}
+.tabs a{display:block;padding:7px 13px;border-radius:7px;text-decoration:none;color:var(--muted);font-weight:500;font-size:14px;white-space:nowrap}
+.tabs a:hover{background:var(--sunk);color:var(--fg)}
+.tabs a.on{background:var(--fg);color:var(--bg)}
+
+main .wrap{display:grid;gap:56px;padding-block:40px 64px}
+section{display:grid;gap:20px}
+.sec-head{display:grid;gap:6px}
+.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:500}
+h2{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(28px,4.6vw,40px);line-height:1;margin:0;text-wrap:balance;letter-spacing:.01em}
+section > .sec-head{padding-bottom:14px;border-bottom:2px solid var(--fg)}
+h3{font-size:18px;margin:0;line-height:1.3}
+.lead{font-size:17px;color:var(--muted);margin:0;max-width:65ch}
+p{margin:0}
+.prose{display:grid;gap:12px;max-width:68ch}
+
+/* Quick start steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;counter-reset:s}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:6px;align-content:start;counter-increment:s}
+.steps li::before{content:"Step " counter(s);font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.steps li > b{font-size:17px}
+.steps span{color:var(--muted);font-size:15px}
+
+/* Grid of rules */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:6px;align-content:start;min-width:0}
+.rule p{color:var(--muted);font-size:15px}
+
+.callout{border-radius:10px;padding:18px 20px;display:grid;gap:8px;border:1px solid var(--line);background:var(--sunk)}
+.callout.warn{background:var(--bad-bg);border-color:transparent}
+.callout.warn h3{color:var(--bad)}
+.callout.ok{background:var(--good-bg);border-color:transparent}
+.callout.ok h3{color:var(--good)}
+.callout p{max-width:70ch}
+.loud{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:26px;letter-spacing:.02em;color:var(--bad);line-height:1.2}
+
+/* Do / Don't */
+.dodont{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.dodont > div{border-radius:10px;padding:18px;display:grid;gap:10px;align-content:start}
+.dodont .do{background:var(--good-bg)}
+.dodont .dont{background:var(--bad-bg)}
+.dodont h3{font-size:15px;text-transform:uppercase;letter-spacing:.08em;font-family:var(--f-mono);font-weight:500}
+.dodont .do h3{color:var(--good)} .dodont .dont h3{color:var(--bad)}
+.dodont ul{margin:0;padding-left:20px;display:grid;gap:6px}
+
+/* Punishment ladder */
+.legend{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+.ladder{display:grid;gap:10px}
+.offense{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:16px;align-items:center}
+.offense .name{display:grid;gap:2px}
+.offense .name b{font-size:16px;line-height:1.3}
+.offense .name small{color:var(--muted);font-size:13px}
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;list-style:none;margin:0;padding:0}
+.chain li{display:flex;align-items:center;gap:6px}
+.chain li + li::before{content:"→";color:var(--muted);font-size:14px}
+.pill{display:inline-grid;gap:0;padding:5px 11px 6px;border-radius:7px;font-size:14px;font-weight:600;line-height:1.2;border:1px solid transparent}
+.pill i{font-style:normal;font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+.s1{background:var(--sev-1-bg);color:var(--sev-1);border-color:color-mix(in srgb,var(--sev-1) 35%,transparent)}
+.s2{background:var(--sev-2-bg);color:var(--sev-2);border-color:color-mix(in srgb,var(--sev-2) 35%,transparent)}
+.s3{background:var(--sev-3-bg);color:var(--sev-3);border-color:color-mix(in srgb,var(--sev-3) 35%,transparent)}
+.s4{background:var(--sev-4-bg);color:var(--sev-4);border-color:color-mix(in srgb,var(--sev-4) 35%,transparent)}
+.s5{background:var(--sev-5-bg);color:var(--sev-5);border-color:color-mix(in srgb,var(--sev-5) 45%,transparent)}
+.legend .pill{font-size:12px;padding:3px 9px}
+@media (max-width:640px){.offense{grid-template-columns:1fr;gap:10px}}
+
+/* Zero tolerance list */
+.zt{display:grid;gap:10px}
+.zt .rule{border-left:0;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:start}
+.zt .rule .x{width:28px;height:28px;border-radius:50%;background:var(--sev-4-bg);color:var(--sev-4);display:grid;place-items:center;font-weight:700;font-size:15px;grid-row:span 2}
+
+/* Ticket phrases */
+.say{display:flex;flex-wrap:wrap;gap:8px}
+.say span{font-family:var(--f-mono);font-size:14px;background:var(--surface);border:1px solid var(--line);padding:6px 10px;border-radius:6px}
+
+/* Checklist */
+.flags{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+.flags > div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:12px;align-content:start;min-width:0}
+.flags h3{display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.flags ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.flags li{padding-left:22px;position:relative;font-size:15px}
+.flags li::before{content:"";position:absolute;left:2px;top:.55em;width:9px;height:9px;border-radius:2px;border:2px solid var(--muted)}
+
+/* Copy templates */
+.tpl{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tpl header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tpl header b{font-size:15px}
+.tpl header small{color:var(--muted);font-size:13px;display:block;font-weight:400}
+.tpl pre{margin:0;padding:16px;font-family:var(--f-mono);font-size:14px;line-height:1.55;white-space:pre-wrap;word-break:break-word;background:var(--sunk)}
+button.copy{font:600 14px var(--f-body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:7px;padding:8px 14px;cursor:pointer}
+button.copy:hover{filter:brightness(1.08)}
+button.copy.done{background:var(--good);color:var(--surface)}
+
+/* Chain of command */
+.tiers{display:grid;gap:0;position:relative}
+.tier{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding-block:14px;border-top:1px dashed var(--line);align-items:start}
+.tier:first-child{border-top:0;padding-top:0}
+.tier-label{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:18px}
+.tier-roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.role{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:grid;gap:8px;align-content:start;min-width:0}
+.role h3{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:21px;letter-spacing:.02em;line-height:1}
+.role p{color:var(--muted);font-size:14.5px}
+.role.top{background:var(--hero);border-color:var(--hero);color:var(--hero-fg)}
+.role.top p{color:var(--hero-muted)}
+.role.top .chip{background:var(--hero-line);color:var(--hero-fg)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.03em;padding:3px 8px;border-radius:5px;background:var(--sunk);color:var(--muted)}
+.chip.hi{background:var(--sev-1-bg);color:var(--sev-1)}
+.chip.new{background:var(--good-bg);color:var(--good)}
+@media (max-width:640px){.tier{grid-template-columns:1fr;gap:8px}.tier-label{padding-top:0}}
+/* Core principles */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.principle{border-top:3px solid var(--fg);background:var(--surface);border-radius:0 0 10px 10px;padding:18px;display:grid;gap:10px;align-content:start}
+.principle h3{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:24px;letter-spacing:.02em;line-height:1}
+.principle ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:15px}
+.principle li::marker{color:var(--brass)}
+/* Useful links */
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.linkcard{display:grid;gap:6px;align-content:start;padding:18px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--fg);text-decoration:none;transition:border-color .15s,transform .15s;min-width:0}
+.linkcard:hover{border-color:var(--fg);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.linkcard{transition:none}.linkcard:hover{transform:none}}
+.lc-name{display:flex;justify-content:space-between;gap:10px;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:20px;letter-spacing:.02em;line-height:1.1}
+.lc-arrow{color:var(--brass);font-family:var(--f-body)}
+.lc-desc{color:var(--muted);font-size:15px}
+.lc-host{font-family:var(--f-mono);font-size:12.5px;color:var(--accent);overflow-wrap:anywhere}
+/* PROLOG how-tos with screenshots */
+.howto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:24px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.howto-text{display:grid;gap:10px;align-content:start}
+.howto-text p{color:var(--muted);font-size:15px}
+.numlist{margin:0;padding-left:22px;display:grid;gap:8px;font-size:15px}
+.numlist li::marker{font-family:var(--f-mono);font-weight:500;color:var(--brass)}
+.shot{margin:0;display:grid;gap:8px;min-width:0}
+.shot img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line);cursor:zoom-in;background:#18181a}
+.shot.tall img{max-height:720px;object-fit:contain;object-position:top}
+.shot figcaption{font-size:13px;color:var(--muted)}
+@media (max-width:760px){.howto{grid-template-columns:1fr;padding:16px}}
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(10,12,8,.88);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));cursor:zoom-out}
+.lightbox[hidden]{display:none}
+.lightbox img{max-width:100%;max-height:100%;border-radius:8px}
+.help{background:var(--hero);color:var(--hero-fg);border-radius:12px;padding:26px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:22px;align-items:center}
+.help img{width:84px;height:auto}
+.help h2{font-size:30px}
+.help p{max-width:62ch;color:var(--hero-muted);margin-top:6px}
+@media (max-width:520px){.help{grid-template-columns:1fr}}
+footer{color:var(--muted);font-size:13px;text-align:center;padding-block:0 32px;display:grid;justify-items:center;gap:10px}
+footer .mini{width:30px;height:30px;border-radius:7px;background:var(--hero);display:grid;place-items:center}
+footer .mini img{width:22px;height:auto}
+kbd{font-family:var(--f-mono);font-size:13px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+</style>
+
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="wrap">
+    <img class="crest" src="assets/logo.png" alt="Old Guys Wardogs crest">
+    <div class="hero-text">
+      <span class="eyebrow">Old Guys Wardogs · Staff only</span>
+      <h1>Staff Handbook<span>Moderation guide &amp; procedures</span></h1>
+      <p>Welcome to the staff team. You've been trusted to <b>enforce the rules and keep our community safe</b>. This page explains how we work, what punishment fits each offense, and how to use PROLOG. Use the tabs to jump around.</p>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <div class="bar">
+    <a class="mini" href="#top" aria-label="Back to top"><img src="assets/logo.png" alt=""></a>
+    <ul>
+      <li><a href="#start">Start here</a></li>
+      <li><a href="#links">Useful links</a></li>
+      <li><a href="#chain">Chain of command</a></li>
+      <li><a href="#conduct">Code of conduct</a></li>
+      <li><a href="#punishments">Punishments</a></li>
+      <li><a href="#zero">Zero tolerance</a></li>
+      <li><a href="#tickets">Tickets &amp; appeals</a></li>
+      <li><a href="#prolog">PROLOG</a></li>
+      <li><a href="#cheaters">Spotting cheaters</a></li>
+      <li><a href="#templates">Copy &amp; paste</a></li>
+    </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+  <!-- START -->
+  <section id="start">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>The short version</span>
+      <h2>Every time you take action</h2>
+      <p class="lead">Kick, ban, warning or message, it's the same three steps each time.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Get proof first</b><span>A clip, screenshot or server log. No proof, no ban.</span></li>
+      <li><b>Follow the ladder</b><span>Look up the offense in the <a href="#punishments">punishment table</a> and give the step that matches how many times they've done it.</span></li>
+      <li><b>Write it down</b><span>Log it in PROLOG (ban page or Staff Notes) and post bans with proof and the player's ID in the Discord <b>EVIDENCE</b> channel.</span></li>
+    </ol>
+  </section>
+
+  <!-- LINKS -->
+  <section id="links">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Section 1</span>
+      <h2>Useful links</h2>
+      <p class="lead">The sites you'll use most. Each one opens in a new tab.</p>
+    </div>
+    <div class="links">
+      <a class="linkcard" href="https://oldguys.prologadmin.com/wardogs/" target="_blank" rel="noopener">
+        <span class="lc-name">Moderation portal<span class="lc-arrow" aria-hidden="true">↗</span></span>
+        <span class="lc-desc">PROLOG, where you kick, ban, add notes and flags.</span>
+        <span class="lc-host">oldguys.prologadmin.com</span>
+      </a>
+      <a class="linkcard" href="https://ticketing.arma-og2.com/#tickets" target="_blank" rel="noopener">
+        <span class="lc-name">Relay ticket transcripts<span class="lc-arrow" aria-hidden="true">↗</span></span>
+        <span class="lc-desc">Read past Discord ticket conversations.</span>
+        <span class="lc-host">ticketing.arma-og2.com</span>
+      </a>
+      <a class="linkcard" href="https://wardogserverlist.com/leaderboard" target="_blank" rel="noopener">
+        <span class="lc-name">Server leaderboard rankings<span class="lc-arrow" aria-hidden="true">↗</span></span>
+        <span class="lc-desc">See how our servers rank against others.</span>
+        <span class="lc-host">wardogserverlist.com</span>
+      </a>
+      <a class="linkcard" href="https://cheatercheck.io/" target="_blank" rel="noopener">
+        <span class="lc-name">Cheater checker<span class="lc-arrow" aria-hidden="true">↗</span></span>
+        <span class="lc-desc">Look up a player's Steam account before a cheating ban.</span>
+        <span class="lc-host">cheatercheck.io</span>
+      </a>
+      <a class="linkcard" href="https://apps.arma-og2.com/applications/APP-9A704160-B715-458F-B0DC-057801823A9C?tab=application&amp;returnTo=%2Fapplications" target="_blank" rel="noopener">
+        <span class="lc-name">Staff applications<span class="lc-arrow" aria-hidden="true">↗</span></span>
+        <span class="lc-desc">Review applications to join the staff team.</span>
+        <span class="lc-host">apps.arma-og2.com</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CHAIN -->
+  <section id="chain">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Section 2</span>
+      <h2>Chain of command</h2>
+      <p class="lead">Who's who, top to bottom. If you're not sure who to go to, ask the level directly above you.</p>
+    </div>
+    <div class="tiers">
+      <div class="tier"><span class="tier-label">Network owner</span><div class="tier-roles"><div class="role top"><h3>Owner</h3><p>Owns the Old Guys 2.0 Network. Handles server hosting, maintenance, financial decisions and policy oversight.</p><div class="chips"><span class="chip">Top of the chain</span></div></div></div></div>
+      <div class="tier"><span class="tier-label">Leadership</span><div class="tier-roles"><div class="role"><h3>El Presidente</h3><p>Head of operations. Makes final gameplay decisions and shapes the direction of the community.</p><div class="chips"><span class="chip">Reports to: Owner</span></div></div><div class="role"><h3>Community Manager</h3><p>Back-end administrator. Handles server maintenance, has full staff oversight and removal authority, and makes sure Old Guys standards are met.</p><div class="chips"><span class="chip hi">Final say on all admin actions</span></div></div></div></div>
+      <div class="tier"><span class="tier-label">Administration</span><div class="tier-roles"><div class="role"><h3>Admin</h3><p>Back-end administrators. Handle server maintenance and staff oversight, and make sure all Old Guys standards are met.</p><div class="chips"><span class="chip">Reports to: Owner</span></div></div></div></div>
+      <div class="tier"><span class="tier-label">Wardogs staff team</span><div class="tier-roles"><div class="role"><h3>Sr. Staff</h3><p>Staff leaders trusted for good decision-making. Train other staff and run day-to-day operations for the team.</p><div class="chips"><span class="chip">Reports to: Admin team</span><span class="chip">Handles ban appeals</span></div></div><div class="role"><h3>Staff</h3><p>Know all the server rules and are skilled at tickets. Handle most in-game issues and answer and resolve tickets.</p><div class="chips"><span class="chip">Reports to: Sr. Staff</span></div></div><div class="role"><h3>Trial Staff</h3><p>New members of the staff team. Learn the rules inside and out, take part in training, and answer simpler tickets.</p><div class="chips"><span class="chip">Reports to: Sr. Staff or Staff</span><span class="chip new">New here? This is you</span></div></div></div></div>
+    </div>
+    <div class="callout">
+      <h3>Who do I report to?</h3>
+      <ul class="prose" style="margin:0;padding-left:20px">
+        <li><b>Trial Staff</b> → Sr. Staff or Staff</li>
+        <li><b>Staff</b> → Sr. Staff</li>
+        <li><b>Sr. Staff</b> → the Admin team, for problems and any back-end or policy changes</li>
+        <li><b>Admin</b> and <b>El Presidente</b> → the Owner</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONDUCT -->
+  <section id="conduct">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Section 3</span>
+      <h2>Admin code of conduct</h2>
+      <p class="lead">This is a high-responsibility role. The same expectations apply to every staff member.</p>
+    </div>
+    <div class="grid2">
+      <div class="rule"><h3>Stay impartial</h3><p>Treat every player the same, no matter if they're your friend or what clan or community they belong to.</p></div>
+      <div class="rule"><h3>Gather evidence</h3><p>Always get recordings, screenshots or server logs before a ban, kick or any permanent action.</p></div>
+      <div class="rule"><h3>Escalate responsibly</h3><p>Stick to the punishment steps. Only skip ahead when the offense clearly calls for immediate severe action.</p></div>
+      <div class="rule"><h3>Document everything</h3><p>Every ban goes in the Discord EVIDENCE channel with the player's ID and proof, plus a note in the Staff Notes section in PROLOG.</p></div>
+    </div>
+
+
+    <div class="principles">
+      <div class="principle">
+        <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Core principle</span>
+        <h3>Accountability</h3>
+        <ul>
+          <li>You represent the staff team everywhere now: every channel, server and thread.</li>
+          <li>Follow the server rules and stay professional in every interaction.</li>
+          <li>Handle disputes with maturity and no favoritism. If you're personally involved, hand it to a staff member who isn't.</li>
+          <li>Keep all internal staff discussions private, including any action taken.</li>
+        </ul>
+      </div>
+      <div class="principle">
+        <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Core principle</span>
+        <h3>Transparency</h3>
+        <ul>
+          <li>Log every action properly so records are easy to find if there's a dispute.</li>
+          <li>Tickets that involve a staff member are handled by <b>Admin only</b>.</li>
+          <li>Ban appeals are handled by <b>Sr. Staff or above</b> only, and never by someone involved.</li>
+          <li>Never discuss disputes, tickets or staff decisions in public channels or in-game chat. Move them to a ticket.</li>
+          <li>Dealing with a difficult player? You can always bring in other staff, ask for input, or ask a superior to show you how to handle it.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dodont">
+      <div class="do">
+        <h3>You're here to</h3>
+        <ul>
+          <li>Enforce the rules</li>
+          <li>Keep the community safe</li>
+          <li>Act like the respected community member you now are</li>
+          <li>Ask admins or senior staff when unsure</li>
+        </ul>
+      </div>
+      <div class="dont">
+        <h3>You're not here to</h3>
+        <ul>
+          <li>Start fights with players in game</li>
+          <li>Tell people how to play because you want it done your way</li>
+          <li>Stop someone from playing their style. If they want to fobbit, let them fobbit. If they want to push zone, let them push zone.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <p><b>Why it matters:</b> people play this game how they want, and we have different servers for a reason. Staff caught directing how others play will be warned. Repeat offenders are removed from the staff team.</p>
+    </div>
+  </section>
+
+  <!-- PUNISHMENTS -->
+  <section id="punishments">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Section 4</span>
+      <h2>Punishment table</h2>
+      <p class="lead">Find the offense, then read left to right. First time gets the first step, second time the next one, and so on.</p>
+    </div>
+    <div class="legend" aria-label="Colour key">
+      <span>Key:</span>
+      <span class="pill s1">Warning</span>
+      <span class="pill s2">Kick</span>
+      <span class="pill s3">24-hour ban</span>
+      <span class="pill s4">7-day ban</span>
+      <span class="pill s5">Permanent ban</span>
+    </div>
+
+    <div class="ladder">
+      <div class="offense">
+        <div class="name"><b>Racism / hate speech</b><small>See <a href="#zero">zero tolerance</a> for details</small></div>
+        <ol class="chain"><li><span class="pill s3"><i>1st</i>24-hour ban</span></li><li><span class="pill s4"><i>2nd</i>7-day ban</span></li><li><span class="pill s5"><i>3rd</i>Perm ban</span></li></ol>
+      </div>
+      <div class="offense">
+        <div class="name"><b>Cheating / exploiting</b><small>No second chances</small></div>
+        <ol class="chain"><li><span class="pill s5"><i>1st</i>Perm ban</span></li></ol>
+      </div>
+      <div class="offense">
+        <div class="name"><b>Intentional teamkilling</b></div>
+        <ol class="chain"><li><span class="pill s1"><i>1st</i>Warning</span></li><li><span class="pill s2"><i>2nd</i>Kick</span></li><li><span class="pill s3"><i>3rd</i>24-hour ban</span></li><li><span class="pill s5"><i>4th</i>Perm ban</span></li></ol>
+      </div>
+      <div class="offense">
+        <div class="name"><b>Teaming</b><small>In solo or specified modes</small></div>
+        <ol class="chain"><li><span class="pill s1"><i>1st</i>Warning</span></li><li><span class="pill s3"><i>2nd</i>24-hour ban</span></li><li><span class="pill s4"><i>3rd</i>7-day ban</span></li><li><span class="pill s5"><i>4th</i>Perm ban</span></li></ol>
+      </div>
+      <div class="offense">
+        <div class="name"><b>Toxicity / harassment</b></div>
+        <ol class="chain"><li><span class="pill s1"><i>1st</i>Warning</span></li><li><span class="pill s2"><i>2nd</i>Kick</span></li><li><span class="pill s3"><i>3rd</i>24-hour ban</span></li><li><span class="pill s5"><i>4th</i>Perm ban</span></li></ol>
+      </div>
+      <div class="offense">
+        <div class="name"><b>Voice / text chat spam</b></div>
+        <ol class="chain"><li><span class="pill s1"><i>1st</i>Warning</span></li><li><span class="pill s2"><i>2nd</i>Kick</span></li><li><span class="pill s3"><i>3rd</i>24-hour ban</span></li><li><span class="pill s5"><i>4th</i>Perm ban</span></li></ol>
+      </div>
+      <div class="offense">
+        <div class="name"><b>Griefing / trolling</b><small>Kick right away if you have immediate proof</small></div>
+        <ol class="chain"><li><span class="pill s1"><i>1st</i>Warning or kick</span></li><li><span class="pill s3"><i>2nd</i>24-hour ban</span></li><li><span class="pill s4"><i>3rd</i>7-day ban</span></li><li><span class="pill s5"><i>4th</i>Perm ban</span></li></ol>
+      </div>
+      <div class="offense">
+        <div class="name"><b>Mob camping</b><small>Warn with an in-game message</small></div>
+        <ol class="chain"><li><span class="pill s1"><i>1st</i>Warning</span></li><li><span class="pill s2"><i>2nd</i>Kick</span></li><li><span class="pill s3"><i>3rd</i>24-hour ban</span></li><li><span class="pill s4"><i>4th</i>7-day ban</span></li></ol>
+      </div>
+      <div class="offense">
+        <div class="name"><b>High ping / out-of-region</b><small>Chinese or Russian region players</small></div>
+        <ol class="chain"><li><span class="pill s5"><i>1st</i>Perm ban</span></li></ol>
+      </div>
+    </div>
+    <div class="callout warn">
+      <h3>Every action still needs proof</h3>
+      <p>Whatever you pick from this table, you still need evidence and a detailed reason written down.</p>
+    </div>
+  </section>
+
+  <!-- ZERO -->
+  <section id="zero">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Section 5</span>
+      <h2>Zero-tolerance offenses</h2>
+      <p class="lead">These skip the usual warnings and go straight to severe action.</p>
+    </div>
+    <div class="zt">
+      <div class="rule"><span class="x" aria-hidden="true">✕</span><h3>Racism &amp; hate speech</h3>
+        <p>Covers voice chat, text chat, player names and clan tags. Blatant racism (the hard "R") is an instant 24-hour ban, then follow the ladder. Homophobic slurs used as casual in-game banter are tolerated, but excessive use, or using them to threaten a player, is treated as hate speech.</p></div>
+      <div class="rule"><span class="x" aria-hidden="true">✕</span><h3>Hacking / third-party scripts</h3>
+        <p>Any unauthorized software: aimbots, wallhacks or unapproved macros.</p></div>
+      <div class="rule"><span class="x" aria-hidden="true">✕</span><h3>Doxing / real-life threats</h3>
+        <p>Threatening players or sharing anyone's personal information (PII).</p></div>
+      <div class="rule"><span class="x" aria-hidden="true">✕</span><h3>High-ping players</h3>
+        <p>We don't allow players from the Chinese or Russian regions because of different laws there and a higher rate of cheating. This is a stats-based decision, not a racial one.</p></div>
+    </div>
+  </section>
+
+  <!-- TICKETS -->
+  <section id="tickets">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Section 6</span>
+      <h2>Discord tickets &amp; ban appeals</h2>
+    </div>
+    <div class="grid2">
+      <div class="rule">
+        <h3>Answering a ticket</h3>
+        <p>Keep it professional. Don't tell the person who reported it what action was taken. Say something like:</p>
+        <div class="say"><span>"Handled."</span><span>"We'll be taking action according to our TOS."</span></div>
+        <p>If they want more explanation, use your judgment. Some players do appreciate more detail.</p>
+      </div>
+      <div class="rule">
+        <h3>Don't message the punished player</h3>
+        <p>Let them open a ticket or come to us. If you type the reason into PROLOG, they'll see it when they're kicked or banned.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <h3>How appeals work</h3>
+      <ol class="prose" style="margin:0;padding-left:20px">
+        <li>The player opens a ticket in the Wardogs Discord <b>within 14 days</b> of the ban.</li>
+        <li>A Sr. Staff member or above who was <b>not involved</b> in the original ban reviews it.</li>
+        <li>If asked, the staff member who issued the ban must provide the proof (clips or log files).</li>
+      </ol>
+      <p><b>Ticket about a staff member?</b> Those go to Admin only.</p>
+    </div>
+  </section>
+
+  <!-- PROLOG -->
+  <section id="prolog">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Section 7</span>
+      <h2>Using PROLOG</h2>
+      <p class="lead">PROLOG is our custom RCON tool. If you haven't been trained on it yet, ping an admin or senior staff member to get set up.</p>
+    </div>
+    <div class="callout warn">
+      <p class="loud">We log everything you do.</p>
+      <p>Every click and every refresh is recorded, and we will see it. This is a powerful tool. Use it responsibly and don't abuse it.</p>
+    </div>
+
+    <div class="howto">
+      <div class="howto-text">
+        <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>How-to 1</span>
+        <h3>Issuing a ban</h3>
+        <p>Open the ban page from the drop-down on the server player list, or with the red <b>Ban</b> button at the top of the full player profile. We need clear evidence, clips and a reasonably detailed reason. This is what we check if the player appeals.</p>
+        <p>The ban page is split into five parts, top to bottom:</p>
+        <ol class="numlist">
+          <li><b>Player information.</b> Filled in for you. Bans are tied to the SteamID64, not the display name.</li>
+          <li><b>Evidence.</b> Add your clips, links and screenshots here.</li>
+          <li><b>Incident details.</b> What happened and why (see the next picture).</li>
+          <li><b>Ban configuration.</b> Pick the duration. Tick <b>Ban Across All Servers</b> to ban them everywhere.</li>
+          <li><b>Internal staff notes.</b> Anything extra for other staff. Players never see this.</li>
+        </ol>
+      </div>
+      <figure class="shot tall"><img src="assets/1-ban-page.png" alt="PROLOG ban page with its five parts numbered" data-zoom><figcaption>The PROLOG ban page. Tap to enlarge.</figcaption></figure>
+    </div>
+
+    <div class="howto">
+      <div class="howto-text">
+        <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>How-to 1, continued</span>
+        <h3>Filling in the ban form</h3>
+        <ol class="numlist">
+          <li><b>Evidence buttons.</b> Add Discord links, media clips, chat or kill evidence, or attachments. Add as much as you reasonably can.</li>
+          <li><b>Detailed Incident Notes.</b> A short summary of what happened, when, and why the ban is warranted.</li>
+          <li><b>Ticket Number.</b> Only if there's a related Discord ticket.</li>
+          <li><b>Ban Reason.</b> Pick the matching reason from the list.</li>
+          <li><b>Time of Incident.</b> When the violation <em>happened</em>, not when you're issuing the ban.</li>
+          <li><b>Which Server.</b> Usually choose the <b>all servers</b> option.</li>
+        </ol>
+      </div>
+      <figure class="shot"><img src="assets/2-ban-form-fields.png" alt="Evidence and incident detail fields, numbered 1 to 6" data-zoom><figcaption>Numbers match the list. Tap to enlarge.</figcaption></figure>
+    </div>
+
+    <div class="rule">
+      <h3>Adding evidence: where to get the link</h3>
+      <p><b>Medal clip:</b> use <b>Add Media Link</b> and paste the clip link.<br>
+      <b>Clip or screenshot sent in Discord:</b> right-click it, choose <kbd>Copy media</kbd>, then paste it with <b>Add Discord Link</b>.</p>
+    </div>
+
+    <div class="howto">
+      <div class="howto-text">
+        <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>How-to 2</span>
+        <h3>Staff Notes</h3>
+        <p>Every action in PROLOG needs a reason written down, including kicks, messages and flags. Those don't have an evidence box, so open the player's profile and use <b>Add Note</b> in the purple <b>Staff Only Notes</b> box.</p>
+        <p>Not every kick needs proof, it's your call, but always write a short reason. This stops two people kicking the same player for the same thing.</p>
+      </div>
+      <figure class="shot"><img src="assets/3-staff-notes.png" alt="Player profile with the Staff Only Notes box and Add Note button highlighted" data-zoom><figcaption>Staff Only Notes is the purple box at the bottom of the profile.</figcaption></figure>
+    </div>
+
+    <div class="howto">
+      <div class="howto-text">
+        <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>How-to 3</span>
+        <h3>Adding flags</h3>
+        <p>You can flag player accounts. On the player's profile, find <b>Flags</b> on the right and click the orange <b>+ Add Flag</b> button. Pick a flag that matches the action you took.</p>
+      </div>
+      <figure class="shot"><img src="assets/4-add-flag.png" alt="Player profile with the Flags panel and Add Flag button highlighted" data-zoom><figcaption>Flags panel, top right of the profile.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- CHEATERS -->
+  <section id="cheaters">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Section 8</span>
+      <h2>Spotting cheaters</h2>
+      <p class="lead">This is hard in Wardogs. A player doing well is not proof of cheating. Do as much research as you can before you ban, so we don't ban good players.</p>
+    </div>
+    <div class="callout">
+      <p><b>Tool we use:</b> check the player's Steam account on <a href="https://cheatercheck.io/" target="_blank" rel="noopener">cheatercheck.io</a>. There are other sites, but this is our main one.</p>
+    </div>
+    <div class="flags">
+      <div>
+        <h3><span class="dot" style="background:var(--sev-4)"></span>Red flags</h3>
+        <ul>
+          <li>Private profile and Steam level 0, <b>and</b> clearly suspicious (for example 1 hour on our server with 30+ kills in a short time). This may warrant a ban.</li>
+          <li>Lots of negative "-rep" comments on their Steam profile. Many hijacked accounts are used for cheating.</li>
+        </ul>
+      </div>
+      <div>
+        <h3><span class="dot" style="background:var(--sev-2)"></span>Needs a PC check</h3>
+        <ul>
+          <li>A VAC ban within the last 100 days.</li>
+          <li>Two or more game bans within the last 100 days.</li>
+        </ul>
+      </div>
+      <div>
+        <h3><span class="dot" style="background:var(--good)"></span>Probably just good</h3>
+        <ul>
+          <li>Lots of games, no bans, high Steam level, and many hours played in other games.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout ok">
+      <h3>Always check in PROLOG too</h3>
+      <p>Look at their playtime, average kills and headshots. Again, great stats on their own don't mean someone is cheating.</p>
+    </div>
+  </section>
+
+  <!-- TEMPLATES -->
+  <section id="templates">
+    <div class="sec-head">
+      <span class="tag"><span class="wings" aria-hidden="true"><i></i><i></i><i></i></span>Section 9</span>
+      <h2>Copy &amp; paste messages</h2>
+      <p class="lead">Ready-made messages. Tap Copy, then paste.</p>
+    </div>
+    <div class="tpl">
+      <header><div><b>Server update announcement</b><small>Send through PROLOG</small></div><button class="copy" type="button" id="copy-update" data-target="t-update">Copy</button></header>
+      <pre id="t-update">Wardogs Update: FYI - Wardogs is going down in ~5mins for a patch. Est downtime around 15 mins - please re join when the servers are back online to help re-populate! Kits will be refunded.</pre>
+    </div>
+    <div class="tpl">
+      <header><div><b>Seeding call</b><small>Post in Discord. Replace # with the server number.</small></div><button class="copy" type="button" id="copy-seed" data-target="t-seed">Copy</button></header>
+      <pre id="t-seed">!!! SEEDING OG # !!! First 20 in get the @WardogsSeeder role of course and/or entry into the raffle and tokens to claim VIP time! Be sure to screenshot yourself and open a ticket to claim! @here</pre>
+    </div>
+  </section>
+
+  <div class="help">
+    <img src="assets/logo.png" alt="">
+    <div>
+    <h2>Stuck? Ask.</h2>
+    <p>If you have questions or aren't sure how to do something, ping our admins or senior staff. We're here to help.</p>
+    </div>
+  </div>
+</div>
+</main>
+<footer><span class="mini"><img src="assets/logo.png" alt=""></span>Old Guys Wardogs · Staff handbook</footer>
+
+<script>
+document.querySelectorAll('button.copy').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const el=document.getElementById(btn.dataset.target);
+    const text=el.textContent;
+    const done=()=>{btn.textContent='Copied';btn.classList.add('done');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('done')},1800)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected, press Ctrl+C'};
+    try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+  });
+});
+// Tap a screenshot to enlarge
+const lb=document.createElement('div');lb.className='lightbox';lb.hidden=true;lb.setAttribute('role','dialog');lb.setAttribute('aria-label','Enlarged screenshot');
+const lbImg=document.createElement('img');lb.appendChild(lbImg);document.body.appendChild(lb);
+lb.addEventListener('click',()=>{lb.hidden=true});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.hidden=true});
+document.querySelectorAll('img[data-zoom]').forEach(img=>{img.tabIndex=0;const open=()=>{lbImg.src=img.src;lbImg.alt=img.alt;lb.hidden=false};img.addEventListener('click',open);img.addEventListener('keydown',e=>{if(e.key==='Enter')open()})});
+// Highlight the tab for the section in view
+const links=[...document.querySelectorAll('.tabs a')];
+const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('on'));const a=map.get(e.target.id);if(a){a.classList.add('on');const c=a.closest('.wrap');const r=a.getBoundingClientRect(),cr=c.getBoundingClientRect();if(r.left<cr.left||r.right>cr.right)c.scrollLeft+=r.left-cr.left-40}}})},{rootMargin:'-30% 0px -60% 0px'});
+document.querySelectorAll('main section[id]').forEach(s=>io.observe(s));
+</script>
+
+</body>
+</html>
