@@ -194,6 +194,8 @@ button.copy.done{background:var(--good);color:var(--surface)}
 .lc-arrow{color:var(--brass);font-family:var(--f-body)}
 .lc-desc{color:var(--muted);font-size:15px}
 .lc-host{font-family:var(--f-mono);font-size:12.5px;color:var(--accent);overflow-wrap:anywhere}
+.lc-badge{justify-self:start;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;background:var(--sev-1-bg);color:var(--sev-1);font-weight:500}
+.lc-note{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13.5px;color:var(--muted)}
 /* PROLOG how-tos with screenshots */
 .howto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:24px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
 .howto-text{display:grid;gap:10px;align-content:start}
@@ -283,11 +285,6 @@ kbd{font-family:var(--f-mono);font-size:13px;background:var(--sunk);border:1px s
         <span class="lc-desc">PROLOG, where you kick, ban, add notes and flags.</span>
         <span class="lc-host">oldguys.prologadmin.com</span>
       </a>
-      <a class="linkcard" href="https://ticketing.arma-og2.com/#tickets" target="_blank" rel="noopener">
-        <span class="lc-name">Relay ticket transcripts<span class="lc-arrow" aria-hidden="true">↗</span></span>
-        <span class="lc-desc">Read past Discord ticket conversations.</span>
-        <span class="lc-host">ticketing.arma-og2.com</span>
-      </a>
       <a class="linkcard" href="https://wardogserverlist.com/leaderboard" target="_blank" rel="noopener">
         <span class="lc-name">Server leaderboard rankings<span class="lc-arrow" aria-hidden="true">↗</span></span>
         <span class="lc-desc">See how our servers rank against others.</span>
@@ -298,11 +295,19 @@ kbd{font-family:var(--f-mono);font-size:13px;background:var(--sunk);border:1px s
         <span class="lc-desc">Look up a player's Steam account before a cheating ban.</span>
         <span class="lc-host">cheatercheck.io</span>
       </a>
-      <a class="linkcard" href="https://apps.arma-og2.com/applications/APP-9A704160-B715-458F-B0DC-057801823A9C?tab=application&amp;returnTo=%2Fapplications" target="_blank" rel="noopener">
+      <a class="linkcard restricted" href="https://ticketing.arma-og2.com/#tickets" target="_blank" rel="noopener">
+        <span class="lc-name">Relay ticket transcripts<span class="lc-arrow" aria-hidden="true">↗</span></span>
+        <span class="lc-badge">Sr. Staff + only</span>
+        <span class="lc-desc">Read past Discord ticket conversations.</span>
+        <span class="lc-host">ticketing.arma-og2.com</span>
+      </a>
+      <a class="linkcard restricted" href="https://apps.arma-og2.com/applications/APP-9A704160-B715-458F-B0DC-057801823A9C?tab=application&amp;returnTo=%2Fapplications" target="_blank" rel="noopener">
         <span class="lc-name">Staff applications<span class="lc-arrow" aria-hidden="true">↗</span></span>
+        <span class="lc-badge">Sr. Staff + only</span>
         <span class="lc-desc">Review applications to join the staff team.</span>
         <span class="lc-host">apps.arma-og2.com</span>
       </a>
+      <p class="lc-note"><span class="lc-badge">Sr. Staff + only</span> These links are for Sr. Staff and above. Trial Staff and Staff won't have access.</p>
     </div>
   </section>
 
@@ -315,8 +320,9 @@ kbd{font-family:var(--f-mono);font-size:13px;background:var(--sunk);border:1px s
     </div>
     <div class="tiers">
       <div class="tier"><span class="tier-label">Network owner</span><div class="tier-roles"><div class="role top"><h3>Owner</h3><p>Owns the Old Guys 2.0 Network. Handles server hosting, maintenance, financial decisions and policy oversight.</p><div class="chips"><span class="chip">Top of the chain</span></div></div></div></div>
-      <div class="tier"><span class="tier-label">Leadership</span><div class="tier-roles"><div class="role"><h3>El Presidente</h3><p>Head of operations. Makes final gameplay decisions and shapes the direction of the community.</p><div class="chips"><span class="chip">Reports to: Owner</span></div></div><div class="role"><h3>Community Manager</h3><p>Back-end administrator. Handles server maintenance, has full staff oversight and removal authority, and makes sure Old Guys standards are met.</p><div class="chips"><span class="chip hi">Final say on all admin actions</span></div></div></div></div>
+      <div class="tier"><span class="tier-label">Leadership</span><div class="tier-roles"><div class="role"><h3>El Presidente</h3><p>Head of operations. Makes final gameplay decisions and shapes the direction of the community.</p><div class="chips"><span class="chip">Reports to: Owner</span></div></div></div></div>
       <div class="tier"><span class="tier-label">Administration</span><div class="tier-roles"><div class="role"><h3>Admin</h3><p>Back-end administrators. Handle server maintenance and staff oversight, and make sure all Old Guys standards are met.</p><div class="chips"><span class="chip">Reports to: Owner</span></div></div></div></div>
+      <div class="tier"><span class="tier-label">Staff relations</span><div class="tier-roles"><div class="role"><h3>Community Manager</h3><p>The staff team's HR rep. Has full staff oversight and removal authority, handles staff concerns, and makes sure Old Guys standards are met.</p><div class="chips"><span class="chip">Reports to: Admin</span></div></div></div></div>
       <div class="tier"><span class="tier-label">Wardogs staff team</span><div class="tier-roles"><div class="role"><h3>Sr. Staff</h3><p>Staff leaders trusted for good decision-making. Train other staff and run day-to-day operations for the team.</p><div class="chips"><span class="chip">Reports to: Admin team</span><span class="chip">Handles ban appeals</span></div></div><div class="role"><h3>Staff</h3><p>Know all the server rules and are skilled at tickets. Handle most in-game issues and answer and resolve tickets.</p><div class="chips"><span class="chip">Reports to: Sr. Staff</span></div></div><div class="role"><h3>Trial Staff</h3><p>New members of the staff team. Learn the rules inside and out, take part in training, and answer simpler tickets.</p><div class="chips"><span class="chip">Reports to: Sr. Staff or Staff</span><span class="chip new">New here? This is you</span></div></div></div></div>
     </div>
     <div class="callout">
@@ -466,8 +472,6 @@ kbd{font-family:var(--f-mono);font-size:13px;background:var(--sunk);border:1px s
         <p>Any unauthorized software: aimbots, wallhacks or unapproved macros.</p></div>
       <div class="rule"><span class="x" aria-hidden="true">✕</span><h3>Doxing / real-life threats</h3>
         <p>Threatening players or sharing anyone's personal information (PII).</p></div>
-      <div class="rule"><span class="x" aria-hidden="true">✕</span><h3>High-ping players</h3>
-        <p>We don't allow players from the Chinese or Russian regions because of different laws there and a higher rate of cheating. This is a stats-based decision, not a racial one.</p></div>
     </div>
   </section>
 
